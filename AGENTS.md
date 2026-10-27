@@ -121,7 +121,7 @@ export function Notice({ className, tone = "info", ...props }: NoticeProps) {
 
 ## 测试
 
-- 测试文件与被测代码同目录，命名 `*.test.ts` / `*.test.tsx`；当前示例：`src/components/reui/badge.test.tsx`。
+- 测试文件与被测代码同目录，命名 `*.test.ts` / `*.test.tsx`。
 - 显式从 `vitest` 导入 `describe`、`expect`、`it`，不要依赖 `vitest/globals`。
 - 默认是 Node 环境。纯逻辑测试直接导入函数；组件渲染测试优先用 `react-dom/server` 的 `renderToStaticMarkup`，无需 DOM。
 - 断言行为或公开契约（渲染内容、`data-slot`、变体 class、可访问属性），避免脆弱快照和实现细节。
