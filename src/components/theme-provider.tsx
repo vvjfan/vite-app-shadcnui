@@ -12,6 +12,7 @@ type ThemeProviderProps = {
 
 type ThemeProviderState = {
   theme: Theme
+  resolvedTheme: ResolvedTheme
   setTheme: (theme: Theme) => void
 }
 
@@ -36,6 +37,12 @@ function getSystemTheme(): ResolvedTheme {
   }
 
   return "light"
+}
+
+function subscribeSystemTheme(onChange: () => void) {
+  const query = window.matchMedia(COLOR_SCHEME_QUERY)
+  query.addEventListener("change", onChange)
+  return () => query.removeEventListener("change", onChange)
 }
 
 function disableTransitionsTemporarily() {
@@ -203,12 +210,20 @@ export function ThemeProvider({
     }
   }, [defaultTheme, storageKey])
 
+  const systemTheme = React.useSyncExternalStore(
+    subscribeSystemTheme,
+    getSystemTheme,
+    () => "light" as const
+  )
+  const resolvedTheme = theme === "system" ? systemTheme : theme
+
   const value = React.useMemo(
     () => ({
       theme,
+      resolvedTheme,
       setTheme,
     }),
-    [theme, setTheme]
+    [theme, resolvedTheme, setTheme]
   )
 
   return (

@@ -1,0 +1,18 @@
+{
+  "short_name": "Tempo",
+  "name": "Tempo - Task Management Template",
+  "description": "A task management dashboard built with Vite, React and Tailwind CSS.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#18181b",
+  "background_color": "#ffffff"
+}

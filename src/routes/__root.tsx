@@ -1,30 +1,24 @@
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router"
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools"
+import { createRootRoute } from "@tanstack/react-router"
+import { App } from "@/App"
+import { RouteProgress } from "@/components/route-progress"
+import {
+  NotFound,
+  RouteError,
+} from "@/features/app-shell/components/error-screens"
 
-export const Route = createRootRoute({ component: RootLayout })
+export const Route = createRootRoute({
+  component: RootLayout,
+  notFoundComponent: () => <NotFound className="min-h-svh" />,
+  errorComponent: ({ error }) => (
+    <RouteError error={error} className="min-h-svh" />
+  ),
+})
 
 function RootLayout() {
   return (
     <>
-      <nav aria-label="Main navigation" className="flex gap-4 border-b p-6">
-        <Link
-          to="/"
-          activeOptions={{ exact: true }}
-          className="rounded-sm focus-visible:outline-2 focus-visible:outline-ring [&.active]:font-bold"
-        >
-          Home
-        </Link>
-        <Link
-          to="/about"
-          className="rounded-sm focus-visible:outline-2 focus-visible:outline-ring [&.active]:font-bold"
-        >
-          About
-        </Link>
-      </nav>
-      <main>
-        <Outlet />
-      </main>
-      <TanStackRouterDevtools />
+      <RouteProgress />
+      <App />
     </>
   )
 }

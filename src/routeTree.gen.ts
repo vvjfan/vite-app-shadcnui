@@ -9,12 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/_app'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as SignInRouteImport } from './routes/sign-in'
+import { Route as AppIndexRouteImport } from './routes/_app/index'
+import { Route as AppHomeRouteImport } from './routes/_app/home'
+import { Route as AppReportsRouteRouteImport } from './routes/_app/reports/route'
+import { Route as AppTasksRouteRouteImport } from './routes/_app/tasks/route'
+import { Route as AppReportsIndexRouteImport } from './routes/_app/reports/index'
+import { Route as AppReportsActivityRouteImport } from './routes/_app/reports/activity'
+import { Route as AppReportsAiOpsRouteImport } from './routes/_app/reports/ai-ops'
+import { Route as AppReportsAnalyticsRouteImport } from './routes/_app/reports/analytics'
+import { Route as AppTasksIndexRouteImport } from './routes/_app/tasks/index'
+import { Route as AppTasksBoardRouteImport } from './routes/_app/tasks/board'
+import { Route as AppTasksCalendarRouteImport } from './routes/_app/tasks/calendar'
+import { Route as AppTasksMyRouteImport } from './routes/_app/tasks/my'
+import { Route as AppTasksTeamRouteImport } from './routes/_app/tasks/team'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -22,40 +35,194 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SignInRoute = SignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHomeRoute = AppHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReportsRouteRoute = AppReportsRouteRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTasksRouteRoute = AppTasksRouteRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReportsIndexRoute = AppReportsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppReportsRouteRoute,
+} as any)
+const AppReportsActivityRoute = AppReportsActivityRouteImport.update({
+  id: '/activity',
+  path: '/activity',
+  getParentRoute: () => AppReportsRouteRoute,
+} as any)
+const AppReportsAiOpsRoute = AppReportsAiOpsRouteImport.update({
+  id: '/ai-ops',
+  path: '/ai-ops',
+  getParentRoute: () => AppReportsRouteRoute,
+} as any)
+const AppReportsAnalyticsRoute = AppReportsAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AppReportsRouteRoute,
+} as any)
+const AppTasksIndexRoute = AppTasksIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppTasksRouteRoute,
+} as any)
+const AppTasksBoardRoute = AppTasksBoardRouteImport.update({
+  id: '/board',
+  path: '/board',
+  getParentRoute: () => AppTasksRouteRoute,
+} as any)
+const AppTasksCalendarRoute = AppTasksCalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => AppTasksRouteRoute,
+} as any)
+const AppTasksMyRoute = AppTasksMyRouteImport.update({
+  id: '/my',
+  path: '/my',
+  getParentRoute: () => AppTasksRouteRoute,
+} as any)
+const AppTasksTeamRoute = AppTasksTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => AppTasksRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof AppIndexRoute
   '/about': typeof AboutRoute
+  '/sign-in': typeof SignInRoute
+  '/reports': typeof AppReportsRouteRouteWithChildren
+  '/tasks': typeof AppTasksRouteRouteWithChildren
+  '/home': typeof AppHomeRoute
+  '/reports/activity': typeof AppReportsActivityRoute
+  '/reports/ai-ops': typeof AppReportsAiOpsRoute
+  '/reports/analytics': typeof AppReportsAnalyticsRoute
+  '/tasks/board': typeof AppTasksBoardRoute
+  '/tasks/calendar': typeof AppTasksCalendarRoute
+  '/tasks/my': typeof AppTasksMyRoute
+  '/tasks/team': typeof AppTasksTeamRoute
+  '/reports/': typeof AppReportsIndexRoute
+  '/tasks/': typeof AppTasksIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/sign-in': typeof SignInRoute
+  '/home': typeof AppHomeRoute
+  '/': typeof AppIndexRoute
+  '/reports/activity': typeof AppReportsActivityRoute
+  '/reports/ai-ops': typeof AppReportsAiOpsRoute
+  '/reports/analytics': typeof AppReportsAnalyticsRoute
+  '/tasks/board': typeof AppTasksBoardRoute
+  '/tasks/calendar': typeof AppTasksCalendarRoute
+  '/tasks/my': typeof AppTasksMyRoute
+  '/tasks/team': typeof AppTasksTeamRoute
+  '/reports': typeof AppReportsIndexRoute
+  '/tasks': typeof AppTasksIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  '/_app': typeof AppRouteWithChildren
   '/about': typeof AboutRoute
+  '/sign-in': typeof SignInRoute
+  '/_app/reports': typeof AppReportsRouteRouteWithChildren
+  '/_app/tasks': typeof AppTasksRouteRouteWithChildren
+  '/_app/home': typeof AppHomeRoute
+  '/_app/': typeof AppIndexRoute
+  '/_app/reports/activity': typeof AppReportsActivityRoute
+  '/_app/reports/ai-ops': typeof AppReportsAiOpsRoute
+  '/_app/reports/analytics': typeof AppReportsAnalyticsRoute
+  '/_app/tasks/board': typeof AppTasksBoardRoute
+  '/_app/tasks/calendar': typeof AppTasksCalendarRoute
+  '/_app/tasks/my': typeof AppTasksMyRoute
+  '/_app/tasks/team': typeof AppTasksTeamRoute
+  '/_app/reports/': typeof AppReportsIndexRoute
+  '/_app/tasks/': typeof AppTasksIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/sign-in'
+    | '/reports'
+    | '/tasks'
+    | '/home'
+    | '/reports/activity'
+    | '/reports/ai-ops'
+    | '/reports/analytics'
+    | '/tasks/board'
+    | '/tasks/calendar'
+    | '/tasks/my'
+    | '/tasks/team'
+    | '/reports/'
+    | '/tasks/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/about'
+    | '/sign-in'
+    | '/home'
+    | '/'
+    | '/reports/activity'
+    | '/reports/ai-ops'
+    | '/reports/analytics'
+    | '/tasks/board'
+    | '/tasks/calendar'
+    | '/tasks/my'
+    | '/tasks/team'
+    | '/reports'
+    | '/tasks'
+  id:
+    | '__root__'
+    | '/_app'
+    | '/about'
+    | '/sign-in'
+    | '/_app/reports'
+    | '/_app/tasks'
+    | '/_app/home'
+    | '/_app/'
+    | '/_app/reports/activity'
+    | '/_app/reports/ai-ops'
+    | '/_app/reports/analytics'
+    | '/_app/tasks/board'
+    | '/_app/tasks/calendar'
+    | '/_app/tasks/my'
+    | '/_app/tasks/team'
+    | '/_app/reports/'
+    | '/_app/tasks/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
   AboutRoute: typeof AboutRoute
+  SignInRoute: typeof SignInRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
+    '/_app': {
+      id: '/_app'
+      path: ''
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -65,12 +232,165 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sign-in': {
+      id: '/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof SignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/': {
+      id: '/_app/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/home': {
+      id: '/_app/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof AppHomeRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/reports': {
+      id: '/_app/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof AppReportsRouteRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/tasks': {
+      id: '/_app/tasks'
+      path: '/tasks'
+      fullPath: '/tasks'
+      preLoaderRoute: typeof AppTasksRouteRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/reports/': {
+      id: '/_app/reports/'
+      path: '/'
+      fullPath: '/reports/'
+      preLoaderRoute: typeof AppReportsIndexRouteImport
+      parentRoute: typeof AppReportsRouteRoute
+    }
+    '/_app/reports/activity': {
+      id: '/_app/reports/activity'
+      path: '/activity'
+      fullPath: '/reports/activity'
+      preLoaderRoute: typeof AppReportsActivityRouteImport
+      parentRoute: typeof AppReportsRouteRoute
+    }
+    '/_app/reports/ai-ops': {
+      id: '/_app/reports/ai-ops'
+      path: '/ai-ops'
+      fullPath: '/reports/ai-ops'
+      preLoaderRoute: typeof AppReportsAiOpsRouteImport
+      parentRoute: typeof AppReportsRouteRoute
+    }
+    '/_app/reports/analytics': {
+      id: '/_app/reports/analytics'
+      path: '/analytics'
+      fullPath: '/reports/analytics'
+      preLoaderRoute: typeof AppReportsAnalyticsRouteImport
+      parentRoute: typeof AppReportsRouteRoute
+    }
+    '/_app/tasks/': {
+      id: '/_app/tasks/'
+      path: '/'
+      fullPath: '/tasks/'
+      preLoaderRoute: typeof AppTasksIndexRouteImport
+      parentRoute: typeof AppTasksRouteRoute
+    }
+    '/_app/tasks/board': {
+      id: '/_app/tasks/board'
+      path: '/board'
+      fullPath: '/tasks/board'
+      preLoaderRoute: typeof AppTasksBoardRouteImport
+      parentRoute: typeof AppTasksRouteRoute
+    }
+    '/_app/tasks/calendar': {
+      id: '/_app/tasks/calendar'
+      path: '/calendar'
+      fullPath: '/tasks/calendar'
+      preLoaderRoute: typeof AppTasksCalendarRouteImport
+      parentRoute: typeof AppTasksRouteRoute
+    }
+    '/_app/tasks/my': {
+      id: '/_app/tasks/my'
+      path: '/my'
+      fullPath: '/tasks/my'
+      preLoaderRoute: typeof AppTasksMyRouteImport
+      parentRoute: typeof AppTasksRouteRoute
+    }
+    '/_app/tasks/team': {
+      id: '/_app/tasks/team'
+      path: '/team'
+      fullPath: '/tasks/team'
+      preLoaderRoute: typeof AppTasksTeamRouteImport
+      parentRoute: typeof AppTasksRouteRoute
+    }
   }
 }
 
+interface AppReportsRouteRouteChildren {
+  AppReportsActivityRoute: typeof AppReportsActivityRoute
+  AppReportsAiOpsRoute: typeof AppReportsAiOpsRoute
+  AppReportsAnalyticsRoute: typeof AppReportsAnalyticsRoute
+  AppReportsIndexRoute: typeof AppReportsIndexRoute
+}
+
+const AppReportsRouteRouteChildren: AppReportsRouteRouteChildren = {
+  AppReportsActivityRoute: AppReportsActivityRoute,
+  AppReportsAiOpsRoute: AppReportsAiOpsRoute,
+  AppReportsAnalyticsRoute: AppReportsAnalyticsRoute,
+  AppReportsIndexRoute: AppReportsIndexRoute,
+}
+
+const AppReportsRouteRouteWithChildren = AppReportsRouteRoute._addFileChildren(
+  AppReportsRouteRouteChildren,
+)
+
+interface AppTasksRouteRouteChildren {
+  AppTasksBoardRoute: typeof AppTasksBoardRoute
+  AppTasksCalendarRoute: typeof AppTasksCalendarRoute
+  AppTasksMyRoute: typeof AppTasksMyRoute
+  AppTasksTeamRoute: typeof AppTasksTeamRoute
+  AppTasksIndexRoute: typeof AppTasksIndexRoute
+}
+
+const AppTasksRouteRouteChildren: AppTasksRouteRouteChildren = {
+  AppTasksBoardRoute: AppTasksBoardRoute,
+  AppTasksCalendarRoute: AppTasksCalendarRoute,
+  AppTasksMyRoute: AppTasksMyRoute,
+  AppTasksTeamRoute: AppTasksTeamRoute,
+  AppTasksIndexRoute: AppTasksIndexRoute,
+}
+
+const AppTasksRouteRouteWithChildren = AppTasksRouteRoute._addFileChildren(
+  AppTasksRouteRouteChildren,
+)
+
+interface AppRouteChildren {
+  AppReportsRouteRoute: typeof AppReportsRouteRouteWithChildren
+  AppTasksRouteRoute: typeof AppTasksRouteRouteWithChildren
+  AppHomeRoute: typeof AppHomeRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppReportsRouteRoute: AppReportsRouteRouteWithChildren,
+  AppTasksRouteRoute: AppTasksRouteRouteWithChildren,
+  AppHomeRoute: AppHomeRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
   AboutRoute: AboutRoute,
+  SignInRoute: SignInRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

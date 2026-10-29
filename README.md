@@ -1,21 +1,31 @@
-# React + TypeScript + Vite + shadcn/ui
+# Tempo on Vite
 
-This is a template for a new Vite project with React, TypeScript, and shadcn/ui.
+The Tempo task dashboard, ported from `reui-templates/tempo-tasks` to the existing Vite + React application. Routing uses client-side TanStack Router. There is no TanStack Start dependency, SSR server, or server entry point.
 
-## Adding components
+## Run and validate
 
-To add components to your app, run the following command:
-
-```bash
-npx shadcn@latest add button
+```sh
+pnpm install
+pnpm dev
+pnpm test
+pnpm typecheck
+pnpm lint
+pnpm build
+pnpm preview
 ```
 
-This will place the ui components in the `src/components` directory.
+## Features
 
-## Using components
+- Home dashboard with charts and task queue CRUD, URL search, filters, sorting, and pagination.
+- My tasks Gantt timeline, Team tasks data grid, Kanban board, and event calendar.
+- Activity, Analytics, and AI Ops reports with their editing dialogs.
+- Workspace settings, organizations, notifications, search, context calendar, and simulated sign-in/sign-out.
+- Keyboard navigation, skip link, responsive sidebars, and light/dark/system themes. Press `d` outside an editable field to switch themes.
 
-To use the components in your app, import them as follows:
+The application preserves the target's `base-mira` shadcn style, Phosphor icon library, CSS-first Tailwind configuration, theme tokens, local Inter font, and Chinese fallback stack. Missing primitives come from the official Mira registry; ReUI feature components come from Tempo. The only global CSS fix is a missing semicolon in the existing font declaration.
 
-```tsx
-import { Button } from "@/components/ui/button"
-```
+Recharts 3.8.0 supplies the original charts. TanStack Table 8.21.3 matches Tempo's data-grid API. These are the two dependency changes required by the port.
+
+Demo services, authentication, and feature persistence behave as in the source: authentication and some preferences use localStorage; task edits are in-memory demo state, not a shared backend. Public avatars use external URLs. Deploy the built `dist/` directory on a host configured to serve `index.html` for client-side routes.
+
+The copied source's license is in `TEMPO-LICENSE.md`.
