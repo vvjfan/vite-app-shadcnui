@@ -342,7 +342,7 @@ function FilterInput<T = unknown>({
   return (
     <InputGroup
       className={cn(
-        "w-36 border-border",
+        "w-36",
         context.size == "sm" && "h-6!",
         context.size == "default" && "h-7!",
         context.size == "lg" && "h-8!",
@@ -771,8 +771,7 @@ function SelectOptionsPopover<T = unknown>({
             )}
             className={cn(
               "h-8 rounded-none border-0 border-input bg-transparent! px-2 text-sm shadow-none",
-              "focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0",
-              open && "placeholder:text-foreground"
+              "focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0"
             )}
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
@@ -1251,8 +1250,7 @@ function FilterSubmenuContent<T = unknown>({
             placeholder={i18n.placeholders.searchField(field.label || "")}
             className={cn(
               "h-8 rounded-none border-0 bg-transparent! px-2 text-sm shadow-none",
-              "focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0",
-              isActive && "placeholder:text-foreground"
+              "focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0"
             )}
             value={searchInput}
             onBlur={() => isActive && inputRef.current?.focus()}
@@ -1622,8 +1620,7 @@ export function Filters<T = unknown>({
                       placeholder={mergedI18n.searchFields}
                       className={cn(
                         "h-8 rounded-none border-0 bg-transparent! px-2 text-sm shadow-none",
-                        "focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0",
-                        activeMenu === "root" && "placeholder:text-foreground"
+                        "focus-visible:border-border focus-visible:ring-0 focus-visible:ring-offset-0"
                       )}
                       value={menuSearchInput}
                       onFocus={() => setActiveMenu("root")}

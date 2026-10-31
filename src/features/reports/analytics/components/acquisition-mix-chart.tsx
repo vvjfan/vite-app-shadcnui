@@ -130,7 +130,7 @@ export function AcquisitionMixChart() {
                 <TabsTrigger
                   key={period.key}
                   value={period.key}
-                  className="flex-1"
+                  className="flex-1 data-active:shadow-sm"
                 >
                   {period.label}
                 </TabsTrigger>

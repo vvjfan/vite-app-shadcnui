@@ -30,6 +30,7 @@
     --color-accent-foreground: var(--accent-foreground);
     --color-accent: var(--accent);
     --color-muted-foreground: var(--muted-foreground);
+    --color-placeholder: color-mix(in oklab, var(--foreground) 50%, transparent);
     --color-muted: var(--muted);
     --color-secondary-foreground: var(--secondary-foreground);
     --color-secondary: var(--secondary);
@@ -71,14 +72,14 @@
   --primary-foreground: oklch(1.0000 0 0);
   --secondary: oklch(0.9629 0.0025 228.7843);
   --secondary-foreground: oklch(0.2479 0.0058 271.1764);
-  --muted: oklch(0.9816 0.0017 247.8390);
+  --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.4979 0.0094 253.9144);
   --accent: oklch(0.9532 0.0207 261.7717);
   --accent-foreground: oklch(0.5737 0.1946 257.8578);
   --destructive: oklch(0.5785 0.2063 29.0133);
   --destructive-foreground: var(--color-red-800); /*oklch(1.0000 0 0);*/
   --border: oklch(0.8941 0.0059 264.5303);
-  --input: oklch(0.9629 0.0025 228.7843);
+  --input: var(--border);
   --ring: oklch(0.5737 0.1946 257.8578);
   --chart-1: oklch(0.6304 0.1800 259.9560);
   --chart-2: oklch(0.6257 0.2058 29.0773);
@@ -117,14 +118,14 @@
   --primary-foreground: oklch(1.0000 0 0);
   --secondary: oklch(0.3688 0.0074 240.0188);
   --secondary-foreground: oklch(0.9364 0.0046 258.3251);
-  --muted: oklch(0.3334 0.0071 274.7646);
+  --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.7028 0.0111 247.9859);
   --accent: oklch(0.3467 0.0731 256.6895);
   --accent-foreground: oklch(0.6304 0.1800 259.9560);
   --destructive: oklch(0.6257 0.2058 29.0773);
   --destructive-foreground: oklch(0.2479 0.0058 271.1764);
   --border: oklch(0.3688 0.0074 240.0188);
-  --input: oklch(0.3688 0.0074 240.0188);
+  --input: var(--border);
   --ring: oklch(0.6304 0.1800 259.9560);
   --chart-1: oklch(0.6304 0.1800 259.9560);
   --chart-2: oklch(0.6257 0.2058 29.0773);
@@ -150,6 +151,10 @@
 }
 
 @layer base {
+  input::placeholder, textarea::placeholder {
+    @apply text-placeholder;
+    opacity: 1;
+  }
   * {
     @apply border-border outline-ring/50;
     }

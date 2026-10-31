@@ -1330,7 +1330,7 @@ function ProfileSelectField({
         id={id}
         onBlur={onBlur}
         aria-invalid={invalid || undefined}
-        className="w-full gap-2 rounded-lg border border-input px-4 py-2 text-sm font-normal text-foreground shadow-none"
+        className="w-full gap-2 rounded-lg px-4 py-2 text-sm font-normal text-foreground shadow-none"
       >
         <SelectValue>
           {(item: ProfileSelectOption | null) => item?.label ?? null}
