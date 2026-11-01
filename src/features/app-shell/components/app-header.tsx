@@ -144,7 +144,7 @@ export function AppHeader() {
             render={
               <Button
                 variant="ghost"
-                size="icon-sm"
+                size="icon-lg"
                 aria-label="More options"
                 className="shrink-0 text-muted-foreground"
               />
@@ -208,7 +208,7 @@ export function AppHeader() {
         {/* Right panel toggle - mobile opens Sheet, desktop animates in-flow width */}
         <Button
           variant="ghost"
-          size="icon-sm"
+          size="icon-lg"
           onClick={isMobile ? toggleMobile : toggle}
           aria-label={
             (isMobile ? mobileOpen : isOpen)
